@@ -2,25 +2,22 @@ name: FeatureCI
 
 on:
   push:
-    branch:
+    branches:
       - '*'
 
 jobs:
-  RunKarateTests
-   runs-on: ubuntu-latest
+  RunKarateTests:
+    runs-on: ubuntu-latest
 
-  steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up Java
-      uses: actions/setup-java@v2
-      with:
-        java-version: '11'
+      - name: Set up Jav
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
 
-    - name: Build and run Karate tests
-      run: | 
-        mvn clean test
-
-
-
+      - name: Build and run Karate tests
+        run: |
+          mvn clean test
