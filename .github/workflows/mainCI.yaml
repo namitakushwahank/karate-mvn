@@ -1,10 +1,6 @@
 name: mainCI
 
-on:
-  push:
-    branch:
-      - main
-  pull_request:
+on: [push, pull_request]
     branch:
       - main
 
