@@ -1,0 +1,21 @@
+name: mainCI
+
+on:
+  push:
+    branch:
+      - main
+  pull_request:
+    branch:
+      - main
+
+jobs:
+  RunKarateTests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build and run Karate tests
+        run: |
+          mvn clean test
