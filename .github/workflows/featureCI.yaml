@@ -4,6 +4,8 @@ on:
   push:
     branch:
       - '*'
+    branches-ignore:
+      - main
 
 jobs:
   RunKarateTests:
