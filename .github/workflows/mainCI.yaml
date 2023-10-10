@@ -4,6 +4,8 @@ on:
   push:
     branch:
       - main
+    branches-ignore:
+      - 'feature/**'
   pull_request:
     branch:
       - main

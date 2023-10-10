@@ -1,0 +1,15 @@
+Feature: Validate GET all bookings endpoint
+
+  Background:
+    * configure ssl = true
+    * def config = call read('file:src/test/java/karate-config.js')
+    * def baseUrl = config.baseURL
+
+  Scenario: GET all bookings
+    Given url baseUrl
+    When path '/booking'
+    And method GET
+    Then status 200
+    #And print response[0].bookingid
+    #And def jsonResponse = karate.jsonPath(response, '$')
+    And match each response[*].bookingid == '#? _ >= 0 && _ % 1 == 0'
