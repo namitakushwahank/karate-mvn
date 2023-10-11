@@ -37,7 +37,7 @@ jobs:
           mvn clean test -Dtest=testRunner -Dkarate.threadCount=10 "-Dkarate.env=${{ github.event.input.env }}" 
 
       - name: Karate Test Result report
-        uses: actions/mocha-gh-reporter@v1
+        uses: dorny/test-reporter@v1
         if: success() || failure()
         with:
           name: Karate Test Results
