@@ -1,6 +1,6 @@
 name: QA Automation Automation
 on:
-  workflow_dispatch:
+  workflow_call:
     paths:
       - 'src/test/**'
     inputs:
