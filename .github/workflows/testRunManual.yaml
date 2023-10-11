@@ -25,15 +25,28 @@ on:
 
 jobs:
   build_and_publish:
-    name: Karate Test Run Env:${{ github.event.input.env }} Groups:${{ github.event.inputs.groups }}
+    name: Karate Test Run On Env:${{ github.event.input.env }} Groups:${{ github.event.inputs.groups }}
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Build and run Karate tests
+      - name: Build and Run Karate tests
         run: |
           mvn clean test -Dtest=testRunner "-Dkarate.env=${{ github.event.inputs.env }}" '-Drp.enable=true' "-Drp.description=GitHub Actions Manual" "-Dkarate.options=--tags @${{ github.event.inputs.groups }}"
 
+      - name: Generate Karate HTML Report
+        run: |
+          # Install the karate-chrome plugin
+          npm install -g karate-chrome
+
+          # Generate the HTML report using karate-chrome
+          karate-chrome --input target/karate-reports --output target/karate-html-report
+
+      - name: Upload HTML Report
+        uses: actions/upload-artifact@v2
+        with:
+          name: karate-html-report
+          path: target/karate-html-report
 
