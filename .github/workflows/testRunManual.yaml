@@ -36,17 +36,11 @@ jobs:
         run: |
           mvn clean test -Dtest=testRunner "-Dkarate.env=${{ github.event.inputs.env }}" '-Drp.enable=true' "-Drp.description=GitHub Actions Manual" "-Dkarate.options=--tags @${{ github.event.inputs.groups }}"
 
-      - name: Generate Karate HTML Report
-        run: |
-          # Install the karate-chrome plugin
-          npm install -g karate-chrome
-
-          # Generate the HTML report using karate-chrome
-          karate-chrome --input target/karate-reports --output target/karate-html-report
-
-      - name: Upload HTML Report
-        uses: actions/upload-artifact@v2
-        with:
-          name: karate-html-report
-          path: target/karate-html-report
+      - name: Karate Test Result report
+          uses: dorny/test-report@v1
+          if: success() || failure()
+          with:
+            name: Karate Test Results
+            path: "./target/karate-reports/*.xml"
+            reporter: java-junit
 
