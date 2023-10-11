@@ -5,6 +5,7 @@ Feature: Validate GET all bookings endpoint
     * def config = call read('file:src/test/java/karate-config.js')
     * def baseUrl = config.baseURL
 
+@smoke
   Scenario: GET all bookings
     Given url baseUrl
     When path '/booking'
