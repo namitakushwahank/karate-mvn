@@ -42,4 +42,5 @@ jobs:
         with:
           name: Karate Test Results
           path: "./target/karate-reports/karate-summary.html"
-          reporter: mocha
+          reporter: html
+
