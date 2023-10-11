@@ -1,4 +1,4 @@
-name: QA Automation Manual
+name: QA Automation Automation
 on:
   workflow_dispatch:
     paths:
