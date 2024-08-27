@@ -37,10 +37,10 @@ jobs:
           mvn clean test -Dtest=testRunner "-Dkarate.env=${{ github.event.inputs.env }}" '-Drp.enable=true' "-Drp.description=GitHub Actions Manual" "-Dkarate.options=--tags @${{ github.event.inputs.groups }}"
 
       - name: Karate Test Result report
-          uses: dorny/test-report@v1
-          if: success() || failure()
-          with:
-            name: Karate Test Results
-            path: "./target/karate-reports/*.xml"
-            reporter: java-junit
+        uses: dorny/test-report@v1
+        if: success() || failure()
+        with:
+          name: Karate Test Results
+          path: "./target/karate-reports/*.xml"
+          reporter: java-junit
 
