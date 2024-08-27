@@ -34,7 +34,7 @@ jobs:
 
       - name: Build and Run Karate tests
         run: |
-          mvn clean test -Dtest=testRunner "-Dkarate.env=${{ github.event.inputs.env }}" '-Drp.enable=true' "-Drp.description=GitHub Actions Manual" "-Dkarate.options=--tags @${{ github.event.inputs.groups }}"
+          mvn clean test
 
       - name: Karate Test Result report
         uses: dorny/test-report@v1
