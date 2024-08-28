@@ -7,4 +7,4 @@ COPY pom.xml .
 RUN mvn clean test
 # EXPOSE 4000
 
-CMD ["mvn", "clean", "test", "-Dtest=testRunner"]
+CMD ["mvn", "clean", "test", "-Dtest=TestRunner"]
