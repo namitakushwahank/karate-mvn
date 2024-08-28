@@ -1,6 +1,6 @@
 FROM maven:3.9.6-eclipse-temurin-17-alpine
 
-WORKDIR /workspace/karate-mvn
+WORKDIR /karate-mvn
 COPY src ./src
 COPY pom.xml .
 
