@@ -1,10 +1,3 @@
-FROM maven:3.9.6-eclipse-temurin-17-alpine
+FROM eclipse-temurin:17-jre
 
-WORKDIR /karate-mvn
-COPY src ./src
-COPY pom.xml .
-
-RUN mvn clean test
-# EXPOSE 4000
-
-CMD ["mvn", "clean", "test", "-Dtest=testRunner"]
+RUN curl -L -o karate.jar https://github.com/karatelabs/karate/releases/download/v1.5.0/karate-1.5.0.jar
