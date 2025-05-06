@@ -1,44 +1,39 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>karate-mvn-automation</artifactId>
+    <artifactId>karate-mvn</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
     <dependencies>
-        <!-- Karate Core -->
+        <!-- Karate: latest stable as of now -->
         <dependency>
-
-                <groupId>com.intuit.karate</groupId>
-                <artifactId>karate-core</artifactId>
-                <version>1.4.1.RC4</version>
-            <!-- Replace with the latest version -->
+            <groupId>com.intuit.karate</groupId>
+            <artifactId>karate-junit5</artifactId>
+            <version>1.4.1</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- JUnit 4 (required for karate-junit4) -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>RELEASE</version>
-            <scope>test</scope>
-        </dependency>
+
+        <!-- Updated cucumber-reporting compatible with Java 17 -->
         <dependency>
             <groupId>net.masterthought</groupId>
             <artifactId>cucumber-reporting</artifactId>
-            <version>5.5.0</version> <!-- Use the appropriate version -->
+            <version>5.8.4</version>
         </dependency>
     </dependencies>
 
@@ -47,14 +42,13 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M5</version>
+                <version>3.5.3</version>
                 <configuration>
                     <includes>
-                        <include>**/*.feature</include>
+                        <include>**/KarateTestRunner.java</include>
                     </includes>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
 </project>
