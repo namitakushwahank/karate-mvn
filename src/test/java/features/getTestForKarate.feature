@@ -8,7 +8,7 @@ Feature: Validate GET all bookings endpoint
 @smoke
   Scenario: GET all bookings
     Given url baseUrl
-    And header x-api-key= "reqres-free-v1"
+    And header x-api-key = "reqres-free-v1"
     When path '/booking'
     And method GET
     Then status 200
